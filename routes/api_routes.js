@@ -8,6 +8,27 @@ const ExerciseCntrl = require('../controllers/exerciseCntrl');
 
 
 // GET  "/""
+app.get("/api/workouts", (req, res) => {
+  db.Workout.find({})
+  .then(workout => {
+    res.json(workout);
+  })
+});
+
+// POST
+app.post("/api/workouts", (req, res) => {
+  db.Workout.create({type: "workout"})
+  res.json(resp);
+})
+
+// UPDATE
+/*update (exercises => {
+  db.Workout.findWorkout(workoutId, {exercises: exercises}, (err, doc) => {
+
+  })
+
+})
+*/
 // Calls controller which will return all activities for a specific workout
 router.get("/", ExerciseCntrl.getAll);
 
