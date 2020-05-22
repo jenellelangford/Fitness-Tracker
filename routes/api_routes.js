@@ -7,32 +7,38 @@ const ExerciseCntrl = require('../controllers/exerciseCntrl');
 // -- USE MVC ARCHITECTURE --> HAVE CLEAN ROUTES AND MOVE THE LOGIC TO THE /CONTROLLERS DIRECTORY -- //
 
 
-// GET  "/""
-app.get("/api/workouts", (req, res) => {
-  db.Workout.find({})
-  .then(workout => {
-    res.json(workout);
-  })
+// GET  "/"
+router.get("/", (req, res) => {
+  exerciseModel.findById(req.params.id), function (err, foundExercise) {
+    if(err) {
+      res.redirect("/index")
+    } else {
+      res.render(("/exerciseCntrl", {ExerciseCntrl: foundExercise}));
+    }
+  }
 });
 
-// POST
-app.post("/api/workouts", (req, res) => {
-  db.Workout.create({type: "workout"})
-  res.json(resp);
-})
-
 // UPDATE
-/*update (exercises => {
-  db.Workout.findWorkout(workoutId, {exercises: exercises}, (err, doc) => {
+router.put("/", (req, res) => {
+  const data = {workout_name: req.body.name };
+  function updateWorkout ( err, updateWorkout ) {
+    if (err)
+    res.redirect("/index");
+  }
+    else {
+    res.redirect("/index" + req.params.id)
+  }
+  exerciseModel.findByIdAndUpdate(req.params.id,)
+});
 
-  })
 
-})
-*/
 // Calls controller which will return all activities for a specific workout
 router.get("/", ExerciseCntrl.getAll);
 
 // -- ADD ADDITIONAL ROUTES -- //
+router.get("/", aboutCntrl.getAll);
+
+router.get("/", index.getAll);
 
 module.exports = router
 

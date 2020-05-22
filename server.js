@@ -33,12 +33,21 @@ app.use(express.static("public"));
 
 // --> STUDENTS: DEFINE ROUTES TO HANDLE WORKOUT AND EXERCISE API CALLS -- //
 
+// GET  "/"
+app.get("/", function(req, res)  {
+  res.send('Homepage')
+});
 
+// POST
+app.post("/", function (req, res) {
+  res.send('Post to homepage')
+});
 
 
 // ================================== // 
 // -- Activity Syntax -> Passing App INSTANCE to Route -- //
 require("./routes/html_routes")(app);
+require("./routes/api_routes")(app);
 
 
 // -- Example ROUTES using EXPRESS ROUTER (https://expressjs.com/en/guide/routing.html) -- //
@@ -47,7 +56,7 @@ require("./routes/html_routes")(app);
 app.use('/api/activity', api_routes);
 
 // ======= ALTERNATE SYNTAX FOR /about ROUTE USING EXPRESS ROUTER ==== //
-// app.use('/about', about_routes);  // <-- uncomment to use, update 
+app.use('/about', about_routes);  // <-- uncomment to use, update 
 
 
 // Syncing our sequelize models and then starting our Express app
