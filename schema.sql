@@ -6,7 +6,7 @@ CREATE DATABASE sequelize_fitness;
 USE sequelize_fitness;
 
 CREATE TABLE workouts (
-  workout_name VARCHAR(40) NOT NULL AUTO_INCREMENT,
+  workout_name VARCHAR(40) NOT NULL,
   weight INTEGER(10),
   sets INTEGER(10),
   reps INTEGER(10),
