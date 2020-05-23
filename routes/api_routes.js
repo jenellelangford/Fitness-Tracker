@@ -1,7 +1,8 @@
 const express = require('express')
 // -- BRING IN THE `EXPRESS ROUTER` -- //
 const router = express.Router()
-
+const AboutCntrl = require('../controllers/aboutCntrl');
+const Index = require('../controllers/index');
 const ExerciseCntrl = require('../controllers/exerciseCntrl');
 
 // -- USE MVC ARCHITECTURE --> HAVE CLEAN ROUTES AND MOVE THE LOGIC TO THE /CONTROLLERS DIRECTORY -- //
@@ -18,13 +19,14 @@ router.get("/", (req, res) => {
   }
 });
 
+
 // UPDATE
 router.put("/", (req, res) => {
   const data = {workout_name: req.body.name };
   function updateWorkout ( err, updateWorkout ) {
     if (err)
-    res.redirect("/index");
-  }
+    res.redirect("/")
+  } 
     else {
     res.redirect("/index" + req.params.id)
   }
@@ -36,9 +38,9 @@ router.put("/", (req, res) => {
 router.get("/", ExerciseCntrl.getAll);
 
 // -- ADD ADDITIONAL ROUTES -- //
-router.get("/", aboutCntrl.getAll);
+router.get("/", AboutCntrl.getAll);
 
-router.get("/", index.getAll);
+router.get("/", Index.getAll);
 
 module.exports = router
 
