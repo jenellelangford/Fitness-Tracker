@@ -38,7 +38,7 @@ router.put("/", (req, res) => {
 router.get("/", ExerciseCntrl.getAll);
 
 // -- ADD ADDITIONAL ROUTES -- //
-router.get("/", AboutCntrl.getAll);
+router.post("/", Index.create);
 
 router.get("/", Index.getAll);
 

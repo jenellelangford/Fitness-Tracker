@@ -2,7 +2,7 @@
 
 // // -- DO WE WANT TO GIVE THEM AN EXAMPLE OR CREATE IT FROM SCRATCH ?? -- //
 module.exports = function (sequelize, DataTypes) {
-  var Exercise = sequelize.define("Exercise", {
+  const Exercise = sequelize.define("Exercise", [
     exercise_type: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -16,8 +16,23 @@ module.exports = function (sequelize, DataTypes) {
       validate: {
         len: [1],
       },
+    },
+    reps: {
+      type: NUMBER
+    },
+    sets: {
+      type: NUMBER
+    },
+    weight: {
+      type: NUMBER
+    },
+    distance: {
+      type: NUMBER
+    },
+    duration: {
+      type: NUMBER
     }
-  });
+  ]);
   return Exercise;
 };
 
@@ -31,3 +46,4 @@ module.exports = function (sequelize, DataTypes) {
 //   // -- DONT FORGET TO RETURN YOUR MODEL (NEW OBJECT) -- //
 //   return // (???);
 // };
+
